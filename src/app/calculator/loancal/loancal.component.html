@@ -1,0 +1,146 @@
+<section class="pt-18 pb-10" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(../assets/images/background/page-header.jpg) no-repeat center;
+  background-size: cover;
+">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="bg-white p-5 rounded-top-md">
+              <div class="row align-items-center">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                  <h1 class="mb-0">Loan Calculator</h1>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="text-md-end mt-3 mt-md-0">
+                    <a href="#!" class="btn btn-primary">How To Apply</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <ul class="nav nav-fill nav-pills-gray-fill">
+                <li class="nav-item ">
+                  <a href="/home" class="nav-link">Give me call back</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/loan-calculator" class="nav-link">Emi Caculator</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="container">
+
+    <div class="mt-n6 bg-white mb-10 rounded-3 shadow-sm p-5">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="row mb-8">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div class="p-3 p-lg-5 card">
+                <div class="">
+                  <div class="d-flex justify-content-between align-items-center mb-3"><span>Loan Amount is </span>
+                    <div>
+                      <h3 id="la_value">{{p}}</h3>
+                    </div>
+                  </div>
+                  30000 <input type="range" value="3000" min="30000"  (change)="amoutchange($event)" max="100000" data-slider-snap="true" id="la"> &#8377; 100000
+                </div>
+                <hr>
+                <div class="">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span>No. of Month is
+                    </span>
+                    <div>
+                      <h3 id="nm_value" >{{n}}</h3>
+                    </div>
+                  </div>
+
+                 12<input type="range" min="1" value="1" max="60" (change)="monthchange($event)" data-slider-snap="true" data-slider-snap="true" id="nm"> 360
+                </div>
+                <hr>
+                <div class="">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span>Rate of Interest [ROI] is
+
+                    </span>
+                    <div>
+                      <h3 id="roi_value">{{r}}</h3>
+                    </div>
+                  </div>
+                  10.25<input type="range"  value="10.25" min="10.25" (change)="ratechange($event)" max="18.45"  data-slider-step="0.1" data-slider-snap="true" id="roi">18.45
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col text-end">
+                        <button class="btn btn-primary" (click)="calculate();tableData()">Calculate</button>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div class="card">
+                <div class="card-body py-3">
+                  Monthly EMI
+                  <h2 id='emi' class="mb-0">{{EMI}}</h2>
+                </div>
+
+                <div class="card-body border-top py-3">
+                  Total Interest
+                  <h2 id='tbl_int' class="mb-0">{{totalinterest}}</h2>
+                </div>
+
+                <div class="card-body border-top py-3"> Payable Amount
+                  <h2 id='tbl_full' class="mb-0">{{totalpayment}}</h2>
+                </div>
+
+                <div class="card-body border-top py-3">
+                  Interest Percentage
+                  <h2 id='tbl_int_pge' class="mb-0">{{interestPercentage}}%</h2>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="table-responsive card">
+            <table id="loantable" class='table table-striped table-light mb-0'></table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="conatiner_table">
+        <table class="table" border="1">
+            <thead>
+              <tr>
+                  <th>Payment No.</th>
+                  <th>Begining Balance</th>
+                  <th>EMI</th>
+                  <th>Principal</th>
+                  <th>Interest</th>
+                  <th>Ending Balance</th>
+              </tr>
+            </thead>
+                    <tbody>
+                      <tr *ngFor="let item of tableObj">
+                        <td>{{item.index}}</td>
+                        <td>{{item.bb}}</td>
+                        <td>{{item.emi}}</td>
+                        <td>{{item.pri}}</td>
+                        <td>{{item.interest}}</td>
+                        <td>{{item.end}}</td>
+                      </tr>
+                    </tbody>
+        </table>
+    </div>
+
+                        
+              
+
+  </section>
